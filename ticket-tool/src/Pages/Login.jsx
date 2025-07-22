@@ -11,7 +11,7 @@ const Login = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const API_URL = 'https://your-api-base-url.com/api/auth/login';
+  const API_URL = 'https://perpetual-liberation-service-ticket.up.railway.app/api/login';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
