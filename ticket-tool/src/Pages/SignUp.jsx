@@ -1,121 +1,119 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Container, Form, Button, Card, Alert, Spinner } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Register = () => {
+const SignUp = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    department: "",
-    password: "",
-    role: "USER", // default role
+    name: '',
+    email: '',
+    phone: '',
+    department: '',
+    password: '',
+    confirmPassword: ''
   });
 
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const apiUrl = "https://perpetual-liberation-service-ticket.up.railway.app/api/save"; // change if deployed
+  const API_URL = 'https://perpetual-liberation-service-ticket.up.railway.app/api/save';
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSuccessMessage("");
-    setErrorMessage("");
+    setError('');
+    setSuccess('');
+
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords don't match");
+      return;
+    }
+
+    setIsLoading(true);
 
     try {
-      const response = await axios.post(apiUrl, formData);
-      setSuccessMessage("User registered successfully!");
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        department: "",
-        password: "",
-        role: "USER",
+      const response = await axios.post(API_URL, {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        department: formData.department,
+        password: formData.password,
+        role: 'USER'
       });
-    } catch (error) {
-      setErrorMessage("Registration failed. " + (error.response?.data || ""));
+
+      setSuccess(`Account created for ${response.data.name}`);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        department: '',
+        password: '',
+        confirmPassword: ''
+      });
+    } catch (err) {
+      setError(err.response?.data || 'Failed to register. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div style={{ maxWidth: "500px", margin: "auto", padding: "2rem" }}>
-      <h2>User Registration</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          required
-          onChange={handleChange}
-        />
-        <br />
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          required
-          onChange={handleChange}
-        />
-        <br />
-        <label>Phone:</label>
-        <input
-          type="text"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-        />
-        <br />
-        <label>Department:</label>
-        <select
-          name="department"
-          value={formData.department}
-          required
-          onChange={handleChange}
-        >
-          <option value="">Select Department</option>
-          <option value="IT">IT</option>
-          <option value="Support">Support</option>
-          <option value="Finance">Finance</option>
-          <option value="HR">HR</option>
-        </select>
-        <br />
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={formData.password}
-          required
-          onChange={handleChange}
-        />
-        <br />
-        <label>Role:</label>
-        <select
-          name="role"
-          value={formData.role}
-          onChange={handleChange}
-        >
-          <option value="USER">USER</option>
-          <option value="ADMIN">ADMIN</option>
-        </select>
-        <br />
-        <button type="submit">Register</button>
-      </form>
+    <Container className="d-flex justify-content-center align-items-center min-vh-100">
+      <Card style={{ width: '400px' }} className="p-4 shadow">
+        <h3 className="text-center mb-3">Create Account</h3>
 
-      {successMessage && (
-        <p style={{ color: "green", marginTop: "1rem" }}>{successMessage}</p>
-      )}
-      {errorMessage && (
-        <p style={{ color: "red", marginTop: "1rem" }}>{errorMessage}</p>
-      )}
-    </div>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-2">
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text" name="name" value={formData.name} onChange={handleChange} required />
+          </Form.Group>
+
+          <Form.Group className="mb-2">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="email" name="email" value={formData.email} onChange={handleChange} required />
+          </Form.Group>
+
+          <Form.Group className="mb-2">
+            <Form.Label>Phone</Form.Label>
+            <Form.Control type="text" name="phone" value={formData.phone} onChange={handleChange} />
+          </Form.Group>
+
+          <Form.Group className="mb-2">
+            <Form.Label>Department</Form.Label>
+            <Form.Select name="department" value={formData.department} onChange={handleChange} required>
+              <option value="">Select Department</option>
+              <option value="IT">IT</option>
+              <option value="Support">Support</option>
+              <option value="HR">HR</option>
+              <option value="Finance">Finance</option>
+            </Form.Select>
+          </Form.Group>
+
+          <Form.Group className="mb-2">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" name="password" value={formData.password} onChange={handleChange} required />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} required />
+          </Form.Group>
+
+          {error && <Alert variant="danger">{error}</Alert>}
+          {success && <Alert variant="success">{success}</Alert>}
+
+          <Button variant="primary" type="submit" className="w-100" disabled={isLoading}>
+            {isLoading ? <Spinner animation="border" size="sm" /> : 'Register'}
+          </Button>
+        </Form>
+      </Card>
+    </Container>
   );
 };
 
-export default Register;
+export default SignUp;
