@@ -2,9 +2,9 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, Form, FormControl, Dropdown, Image, Container } from 'react-bootstrap';
 import { FaBell } from 'react-icons/fa';
-import { FaPlus } from 'react-icons/fa'; // Add this at the top
+import { FaPlus } from 'react-icons/fa'; 
 
-import './CustomNavbar.css';
+import '../Styles/CustomNavbar.css'; 
 
 const CustomNavbar = () => {
   return (
@@ -34,10 +34,10 @@ const CustomNavbar = () => {
         {/* Right Nav Section */}
         <Navbar.Collapse id="navbar-content">
           <Nav className="ms-auto align-items-center gap-3 text-white">
-            <Nav.Link href="#dashboard" className="nav-link-custom">Dashboard</Nav.Link>
-            <Nav.Link href="#tickets" className="nav-link-custom">My Tickets</Nav.Link>
-            <Nav.Link href="#new" className="nav-link-custom">  <FaPlus className="me-1" /> New Ticket</Nav.Link>
-            <Nav.Link href="#track" className="nav-link-custom">Track</Nav.Link>
+            <Nav.Link href="/dashboard" className="nav-link-custom">Dashboard</Nav.Link>
+            <Nav.Link href="/employee-portal" className="nav-link-custom">My Tickets</Nav.Link>
+            <Nav.Link href="/newticket" className="nav-link-custom">  <FaPlus className="me-1" /> New Ticket</Nav.Link>
+            <Nav.Link href="/track" className="nav-link-custom">Track</Nav.Link>
             {/* Notification Bell */}
             <Nav.Link href="#notifications" className="position-relative nav-link-custom">
               <FaBell />
