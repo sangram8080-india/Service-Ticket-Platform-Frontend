@@ -4,7 +4,7 @@
 }
 
 .card-header{
-        background: linear-gradient(135deg, #1f0036, #3c005a);
+        background:rgb(223 119 47 / 90%);
 }
 
 
@@ -110,4 +110,9 @@
 .btn-lg {
     border-radius: 8px;
     font-size: 1.1rem;
+}
+
+.bg-gradient-orange {
+  background-color: rgb(249 115 22 / var(--tw-bg-opacity, 1));
+  font-weight: bold;
 }

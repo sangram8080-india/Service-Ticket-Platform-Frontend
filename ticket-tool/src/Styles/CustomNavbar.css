@@ -1,20 +1,34 @@
-/* Navbar Background */
-.custom-navbar {
-  background: linear-gradient(135deg, #1f0036, #3c005a);
-  color: white;
-  font-family: 'Segoe UI', sans-serif;
+
+
+.text-gradient-blue {
+  color:rgb(17 24 39/var(--tw-bg-opacity,1));
 }
 
+
+
+/* Navbar background */
+.custom-navbar {
+  background-color: #ffffff;
+  color: #1c1e21;
+  font-family: 'Segoe UI', sans-serif;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+/* Brand styling */
 .logo-icon {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  color: #f76300;
 }
 
 .tagline {
-  font-size: 0.7rem;
-  color: #ddd;
+  font-size: 0.65rem;
+  color: rgb(249 115 22 / var(--tw-text-opacity, 1));
 }
 
-/* Search bar */
+/* ------------------------------------------------------------------- */
+
+/* Search bar (optional, if still needed) */
 .search-wrapper {
   flex: 1;
   justify-content: center;
@@ -23,45 +37,45 @@
 }
 
 .search-input {
-  border-radius: 30px;
-  padding: 6px 16px;
-  border: none;
-  background-color: #4b28619e;
-  color: white;
-  width: 100%;
+  border-radius: 20px;
+  padding: 6px 14px;
+  border: 1px solid #ddd;
+  background-color: #aeaeae26;
+  color: #333;
+  font-size: 0.9rem;
 }
 
 .search-input::placeholder {
-  color: #aaa;
+  color: #999;
 }
 
-/* Nav links */
+/* Nav Links */
 .nav-link-custom {
-  color: white !important;
+  color: #1c1e21 !important;
   font-weight: 500;
-  transition: 0.3s ease;
-  padding: 6px 12px;
-  border-radius: 8px;
+  font-size: 0.95rem;
+  padding: 8px 14px;
+  transition: all 0.2s ease-in-out;
 }
 
 .nav-link-custom:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #ffc107 !important;
+  color: #f76300 !important;
+  background-color: transparent;
 }
 
-/* Notifications */
+/* Notification badge */
 .notification-badge {
-  background: red;
+  background: #f44336;
   color: white;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   padding: 2px 6px;
   border-radius: 50%;
   position: absolute;
   top: 0;
-  right: -10px;
+  right: -8px;
 }
 
-/* Profile dropdown */
+/* Profile Dropdown */
 .profile-dropdown {
   background-color: transparent;
   border: none;
@@ -70,7 +84,23 @@
 
 .profile-dropdown:hover,
 .profile-dropdown:focus {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Demo Button */
+.get-demo-btn {
+  background-color: #f76300;
+  border: none;
+  padding: 8px 18px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.get-demo-btn:hover {
+  background-color: #d85500;
 }
 
 /* Responsive */
@@ -82,15 +112,15 @@
   }
 
   .navbar-collapse {
-    background-color: rgb(62 25 85);
-    border-radius: 10px;
-    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    padding: 12px;
   }
 
   .nav-link-custom {
     display: block;
     width: 100%;
     text-align: left;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
 }

@@ -1,20 +1,33 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav, Form, FormControl, Dropdown, Image, Container } from 'react-bootstrap';
-import { FaBell } from 'react-icons/fa';
-import { FaPlus } from 'react-icons/fa'; 
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  Dropdown,
+  Image,
+  Container,
+} from "react-bootstrap";
+import { FaBell } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 
-import '../Styles/CustomNavbar.css'; 
+import "../Styles/CustomNavbar.css";
 
 const CustomNavbar = () => {
   return (
     <Navbar expand="lg" className="custom-navbar shadow-sm" sticky="top">
-      <Container fluid className="px-4 d-flex align-items-center justify-content-between">
-
+      <Container
+        fluid
+        className="px-4 d-flex align-items-center justify-content-between"
+      >
         {/* Logo Section */}
-        <Navbar.Brand href="#home" className="d-flex align-items-center text-white fw-bold">
+        <Navbar.Brand
+          href="/"
+          className="d-flex align-items-center text-white fw-bold"
+        >
           <span className="logo-icon me-2">🎟️</span>
-          <span>ServiceAI</span>
+          <span className="text-gradient-blue">ServiceAI</span>
           <small className="ms-2 tagline">Smart Support Platform</small>
         </Navbar.Brand>
 
@@ -34,19 +47,34 @@ const CustomNavbar = () => {
         {/* Right Nav Section */}
         <Navbar.Collapse id="navbar-content">
           <Nav className="ms-auto align-items-center gap-3 text-white">
-            <Nav.Link href="/dashboard" className="nav-link-custom">Dashboard</Nav.Link>
-            <Nav.Link href="/employee-portal" className="nav-link-custom">My Tickets</Nav.Link>
-            <Nav.Link href="/newticket" className="nav-link-custom">  <FaPlus className="me-1" /> New Ticket</Nav.Link>
-            <Nav.Link href="/track" className="nav-link-custom">Track</Nav.Link>
+            <Nav.Link href="/dashboard" className="nav-link-custom">
+              Dashboard
+            </Nav.Link>
+            <Nav.Link href="/employee-portal" className="nav-link-custom">
+              My Tickets
+            </Nav.Link>
+            <Nav.Link href="/newticket" className="nav-link-custom">
+              {" "}
+              <FaPlus className="me-1" /> New Ticket
+            </Nav.Link>
+            <Nav.Link href="/track" className="nav-link-custom">
+              Track
+            </Nav.Link>
             {/* Notification Bell */}
-            <Nav.Link href="#notifications" className="position-relative nav-link-custom">
+            <Nav.Link
+              href="#notifications"
+              className="position-relative nav-link-custom"
+            >
               <FaBell />
               <span className="notification-badge">2</span>
             </Nav.Link>
 
             {/* Profile Dropdown */}
             <Dropdown align="end">
-              <Dropdown.Toggle variant="dark" className="profile-dropdown d-flex align-items-center">
+              <Dropdown.Toggle
+                variant="dark"
+                className="profile-dropdown d-flex align-items-center"
+              >
                 <Image
                   src="https://via.placeholder.com/30"
                   roundedCircle

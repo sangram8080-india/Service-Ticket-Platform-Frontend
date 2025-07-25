@@ -1,23 +1,23 @@
 
-.text-gradient-purple {
-  color: #c084fc;
+.text-gradient-orange {
+  color: rgb(249 115 22 / var(--tw-text-opacity, 1));
 }
-
+.bg-gradient-orange {
+  background-color: rgb(249 115 22 / var(--tw-bg-opacity, 1));
+  font-weight: bold;
+  color: white;
+}
 .text-gradient-blue {
-  color: #60a5fa;
+  color:rgb(17 24 39/var(--tw-bg-opacity,1));
 }
 
-.text-gradient-red {
-  color: #f87171;
-}
 
 .text-purple {
   color: #a855f7;
 }
 
-
 .homepage {
-  background: linear-gradient(135deg, #1f0036c4, #3c005a);
+  /* background: linear-gradient(135deg, #1f0036c4, #3c005a); */
   min-height: 100vh;
   padding-top: 60px;
   position: relative;
@@ -37,4 +37,157 @@
   z-index: -1;  
   opacity: 0.1;
   pointer-events: none; 
+}
+
+/* 2nd section  */
+/* Goals Section Styling */
+.goals-section {
+  background-color: #f8f9fa;
+}
+
+.goals-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 4px solid rgb(249 115 22 / var(--tw-text-opacity, 1)); /* Blue accent border */
+}
+
+.goals-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styling to match image */
+
+.btn-primary {
+  background-color: rgb(249 115 22 / var(--tw-text-opacity, 1));
+  border-color: #9f5a00;
+}
+
+.btn-outline-primary {
+  color: rgb(249 115 22 / var(--tw-text-opacity, 1));
+  border-color: rgb(249 115 22 / var(--tw-text-opacity, 1));
+}
+
+.btn-outline-primary:hover {
+  background-color: rgb(17 24 39/var(--tw-bg-opacity,1));
+  color: white;
+}
+/* 3rd section  */
+/* 
+.helpdesk-section {
+  background-color: #f9f9f9;
+}
+
+.bg-blue {
+  background-color: #f0f6ff;
+}
+
+.bg-green {
+  background-color: #f0fff5;
+}
+
+.bg-purple {
+  background-color: #fbf0ff;
+}
+
+.bg-orange-light {
+  background-color: #fff7ed;
+}
+
+.text-purple {
+  color: #a855f7;
+}
+
+.text-orange {
+  color: #f97316;
+}
+
+.bg-orange {
+  background-color: #f97316 !important;
+}
+
+.bg-orange:hover {
+  background-color: #fb923c !important;
+}
+
+.border-purple-subtle {
+  border-color: #e9d5ff !important;
+} */
+
+
+
+
+/* Help Desk Section Styling */
+.helpdesk-section {
+  background-color: #f8f9fa;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card {
+  background: white;
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(13, 110, 253, 0.3);
+}
+
+.hover-shadow {
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+/* Background colors for cards */
+.bg-blue { background-color: rgba(13, 110, 253, 0.1); }
+.bg-green { background-color: rgba(25, 135, 84, 0.1); }
+.bg-purple { background-color: rgba(111, 66, 193, 0.1); }
+.bg-orange-light { background-color: rgba(253, 126, 20, 0.1); }
+
+/* Text colors */
+.text-purple { color: #6f42c1; }
+.text-orange { color: #fd7e14; }
+
+/* CTA Button */
+.primary-cta {
+  background-color: #f97316;
+  border: none;
+  padding: 0.75rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.primary-cta:hover {
+  background-color: #fd7e14;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(253, 126, 20, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .helpdesk-section {
+    padding: 3rem 0;
+  }
+  
+  .feature-card {
+    margin-bottom: 1.5rem;
+  }
 }

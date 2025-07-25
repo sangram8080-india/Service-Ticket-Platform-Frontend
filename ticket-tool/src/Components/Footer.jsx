@@ -3,12 +3,12 @@ import { Container, Row, Col } from "react-bootstrap";
 
 const Footer = () => {
   return (
-    <footer className="bg-light-purple text-dark py-5" style={{ backgroundColor: '#f0e6ff' }}>
+    <footer className="bg-light-purple text-dark py-5" style={{ backgroundColor: 'rgb(17 24 39/var(--tw-bg-opacity,1))' }}>
       <Container>
         <Row>
           <Col md={4} className="mb-4 mb-md-0">
-            <h3 className="fw-bold" style={{ color: '#6a0dad' }}>ServiceAI</h3>
-            <h5 className="mb-3" style={{ color: '#8a63d2' }}>Next-Gen Support</h5>
+            <h3 className="fw-bold" style={{ color: '#ffffffff' }}>ServiceAI</h3>
+            <h5 className="mb-3" style={{ color: '#ffffffff' }}>Next-Gen Support</h5>
             <p className="text-secondary">
               Revolutionizing service management with AI-powered automation, real-time tracking, 
               and intelligent insights for the future of customer support.
@@ -21,7 +21,7 @@ const Footer = () => {
           </Col>
 
           <Col md={2} className="mb-4 mb-md-0">
-            <h5 className="fw-bold mb-3" style={{ color: '#6a0dad' }}>Services</h5>
+            <h5 className="fw-bold mb-3" style={{ color: '#ffffffff' }}>Services</h5>
             <ul className="list-unstyled">
               <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Dashboard</a></li>
               <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">My Tickets</a></li>
@@ -31,7 +31,7 @@ const Footer = () => {
           </Col>
 
           <Col md={2} className="mb-4 mb-md-0">
-            <h5 className="fw-bold mb-3" style={{ color: '#6a0dad' }}>Company</h5>
+            <h5 className="fw-bold mb-3" style={{ color: '#ffffffff' }}>Company</h5>
             <ul className="list-unstyled">
               <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">About</a></li>
               <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Blog</a></li>
@@ -41,7 +41,7 @@ const Footer = () => {
           </Col>
 
           <Col md={2} className="mb-4 mb-md-0">
-            <h5 className="fw-bold mb-3" style={{ color: '#6a0dad' }}>Support</h5>
+            <h5 className="fw-bold mb-3" style={{ color: '#ffffffff' }}>Support</h5>
             <ul className="list-unstyled">
               <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Help Center</a></li>
               <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Status</a></li>

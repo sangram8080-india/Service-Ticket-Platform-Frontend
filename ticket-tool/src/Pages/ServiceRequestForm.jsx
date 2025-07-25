@@ -235,7 +235,7 @@ const ServiceRequestForm = () => {
 
             {/* Submit Button */}
             <div className="d-grid mt-4">
-              <button type="submit" className="btn btn-primary btn-lg">
+              <button type="submit" className="btn bg-gradient-orange  btn-lg">
                 <i className="bi bi-send-fill me-2"></i> Submit Ticket
               </button>
             </div>
