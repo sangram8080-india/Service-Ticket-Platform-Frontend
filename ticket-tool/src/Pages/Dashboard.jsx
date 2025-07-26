@@ -2,6 +2,7 @@
 import React from "react";
 import { Container, Row, Col, Card, Table } from "react-bootstrap";
 import SideNav from "../Components/SideNav";
+import Footer from "../Components/Footer";
 
 const Dashboard = () => {
   // Stats data
@@ -39,8 +40,8 @@ const Dashboard = () => {
       <div className="flex-grow-1 p-4" style={{ backgroundColor: "#f8f9fa" }}>
         {/* Header */}
         <div className="mb-4">
-          <h2>Admin Dashboard</h2>
-          <p className="text-muted">Welcome back, Administrator. Here's what's happening today.</p>
+          <h2> Dashboard</h2>
+          <p className="text-muted">Welcome back, Here's what's happening today.</p>
         </div>
 
         {/* Stats Cards */}
@@ -150,12 +151,12 @@ const Dashboard = () => {
           </Col>
         </Row>
 
-        {/* Footer */}
-        <footer className="mt-4 pt-3 text-center text-muted small border-top">
-          <p>Service Ticket System v1.0.0 - © 2023 Company Name. All rights reserved.</p>
-        </footer>
+      
+      
       </div>
     </div>
+      {/* Footer */}
+        <Footer />
     </>
   );
 };

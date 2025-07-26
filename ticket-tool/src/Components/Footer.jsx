@@ -50,6 +50,9 @@ const Footer = () => {
             </ul>
           </Col>
         </Row>
+         <div className="mt-4 pt-3 text-center text-muted small border-top" style={{ color: 'white' }}>
+          <p style={{ color: 'white' }}>Service Ticket System v1.0.0 - © 2023 Company Name. All rights reserved.</p>
+        </div>
       </Container>
     </footer>
   );

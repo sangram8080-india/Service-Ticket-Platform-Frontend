@@ -190,7 +190,7 @@ export default function Home() {
 
             <Button
               as={Link}
-              to="/SignUp"
+              to="/Login"
               className="mt-5 px-4 py-2 fw-semibold bg-orange border-0 rounded shadow-sm"
             >
               Get Started
