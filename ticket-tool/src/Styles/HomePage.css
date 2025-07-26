@@ -17,7 +17,7 @@
 }
 
 .homepage {
-  /* background: linear-gradient(135deg, #1f0036c4, #3c005a); */
+ 
   min-height: 100vh;
   padding-top: 60px;
   position: relative;
@@ -37,7 +37,53 @@
   z-index: -1;  
   opacity: 0.1;
   pointer-events: none; 
+} 
+
+ */
+/* Hero section styling */
+.hero-img {
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 8px 40px rgba(80, 62, 194, 0.10), 0 1.5px 7px rgba(0,0,0,0.04);
+  border-radius: 18px;
+  background: #fff;
+  margin-top: 2rem;
 }
+
+@media (max-width: 991px) {
+  .hero-img {
+    margin-top: 2rem;
+    max-height: 320px;
+  }
+  .homepage .row.align-items-center {
+    flex-direction: column-reverse;
+  }
+}
+
+/* Add subtle style to metric titles */
+.hero-metric {
+  color: #55596a;
+  font-size: 1.04rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* 2nd section  */
 /* Goals Section Styling */
@@ -74,49 +120,6 @@
   background-color: rgb(17 24 39/var(--tw-bg-opacity,1));
   color: white;
 }
-/* 3rd section  */
-/* 
-.helpdesk-section {
-  background-color: #f9f9f9;
-}
-
-.bg-blue {
-  background-color: #f0f6ff;
-}
-
-.bg-green {
-  background-color: #f0fff5;
-}
-
-.bg-purple {
-  background-color: #fbf0ff;
-}
-
-.bg-orange-light {
-  background-color: #fff7ed;
-}
-
-.text-purple {
-  color: #a855f7;
-}
-
-.text-orange {
-  color: #f97316;
-}
-
-.bg-orange {
-  background-color: #f97316 !important;
-}
-
-.bg-orange:hover {
-  background-color: #fb923c !important;
-}
-
-.border-purple-subtle {
-  border-color: #e9d5ff !important;
-} */
-
-
 
 
 /* Help Desk Section Styling */

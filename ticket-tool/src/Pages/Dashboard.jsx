@@ -1,26 +1,7 @@
-// import React from "react";
-// import CustomNavbar from "../Components/CustomNavbar";
-// import Footer from "../Components/Footer";
-// import LocationDetector from '../Components/LocationDetector';
-
-// export default function Dashboard() {
-//   return (
-//     <>
-//     <CustomNavbar />
-
-//       <h1>Welcome to the Dashboard</h1>
-
-    
-
-//       <Footer />
-//     </>
-//   );
-// }
-
-
 
 import React from "react";
 import { Container, Row, Col, Card, Table } from "react-bootstrap";
+import SideNav from "../Components/SideNav";
 
 const Dashboard = () => {
   // Stats data
@@ -48,6 +29,9 @@ const Dashboard = () => {
   ];
 
   return (
+    <>
+
+    <SideNav />
     <div className="d-flex">
       
 
@@ -172,6 +156,7 @@ const Dashboard = () => {
         </footer>
       </div>
     </div>
+    </>
   );
 };
 

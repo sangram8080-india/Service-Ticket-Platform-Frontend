@@ -1,11 +1,10 @@
 import React from "react";
-import CustomNavbar from "../Components/CustomNavbar";
 import Footer from "../Components/Footer";
+import SideNav from "../Components/SideNav";
 export default function RequestTracking() {
   return (
     <>
-    <CustomNavbar />
-
+<SideNav />
       <h1>Welcome to the Request Tracking Page</h1>
 
       <Footer />

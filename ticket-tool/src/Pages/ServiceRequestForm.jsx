@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Styles/ServiceRequestForm.css"; // Your custom styling if needed
 import LocationDetector from "../Components/LocationDetector";
-import CustomNavbar from "../Components/CustomNavbar";
 import Footer from "../Components/Footer";
+import SideNav from "../Components/SideNav";
 const ServiceRequestForm = () => {
   // Initializing all fields in state
   const [formData, setFormData] = useState({
@@ -42,7 +42,7 @@ const ServiceRequestForm = () => {
 
   return (
     <>
-      <CustomNavbar />
+<SideNav />
     <div className="container mt-5 service-request-container">
       <div className="card shadow-lg">
         <div className="card-header text-white">
