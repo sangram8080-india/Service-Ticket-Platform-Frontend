@@ -1,3 +1,5 @@
+
+
 import React, { useState } from "react";
 import {
   Container,
@@ -16,7 +18,8 @@ import BrandLogo from "../Components/BrandLogo";
 import RegisterImage from "../Images/1.png";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  // For user: email; for employee: employeeId
+  const [emailOrEmpId, setEmailOrEmpId] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("User");
   const [error, setError] = useState("");
@@ -25,23 +28,34 @@ const Login = () => {
   const API_URL =
     "https://perpetual-liberation-service-ticket.up.railway.app/api/login";
 
+  //Google handler
+  const handleGoogleLogin = () => {
+    alert("Google Sign-in Clicked");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
-    if (!email || !password) {
-      setError("Please enter both email and password");
+    if (!emailOrEmpId || !password) {
+      setError(
+        role === "User"
+          ? "Please enter both email and password"
+          : "Please enter both Employee ID and password"
+      );
       return;
     }
 
     setIsLoading(true);
 
     try {
-      const response = await axios.post(
-        API_URL,
-        { email, password, role },
-        { headers: { "Content-Type": "application/json" } }
-      );
+      let data = { password, role };
+      if (role === "User") data.email = emailOrEmpId;
+      else data.employeeId = emailOrEmpId; // Backend must accept employeeId for Employee
+
+      const response = await axios.post(API_URL, data, {
+        headers: { "Content-Type": "application/json" },
+      });
 
       const { token, userData } = response.data;
       localStorage.setItem("authToken", token);
@@ -60,7 +74,6 @@ const Login = () => {
   return (
     <div className="login-page-container d-flex flex-column flex-md-row min-vh-100">
       {/* Left Side Info Section */}
-
       <Col
         md={6}
         className="d-flex align-items-center justify-content-center bg-text-gradient-blue text-white flex-column p-5 left-sidebar"
@@ -75,7 +88,6 @@ const Login = () => {
 
           <h2 className="fw-bold mb-3">The Best Help Desk Software</h2>
           <p>Unlimited agents, fantastic support, easy to use!</p>
-
           <a href="/" className="btn btn-outline-light mt-4">
             ← Back to Home
           </a>
@@ -98,7 +110,11 @@ const Login = () => {
                 <div className="d-flex gap-3 justify-content-center">
                   <Button
                     variant={role === "User" ? "primary" : "outline-primary"}
-                    onClick={() => setRole("User")}
+                    onClick={() => {
+                      setRole("User");
+                      setEmailOrEmpId(""); // Reset input on role switch
+                      setPassword("");
+                    }}
                     className={`role-btn ${role === "User" ? "active" : ""}`}
                     disabled={isLoading}
                   >
@@ -108,7 +124,11 @@ const Login = () => {
                     variant={
                       role === "Employee" ? "primary" : "outline-primary"
                     }
-                    onClick={() => setRole("Employee")}
+                    onClick={() => {
+                      setRole("Employee");
+                      setEmailOrEmpId(""); // Reset input on role switch
+                      setPassword("");
+                    }}
                     className={`role-btn ${
                       role === "Employee" ? "active" : ""
                     }`}
@@ -121,28 +141,47 @@ const Login = () => {
 
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
-                  <Form.Label>Email Address</Form.Label>
+                  <Form.Label>
+                    {role === "User" ? "Email Address" : "Employee ID"}
+                  </Form.Label>
                   <Form.Control
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    type={role === "User" ? "email" : "text"}
+                    placeholder={
+                      role === "User"
+                        ? "Enter your email"
+                        : "Enter your Employee ID"
+                    }
+                    value={emailOrEmpId}
+                    onChange={(e) => setEmailOrEmpId(e.target.value)}
                     className="login-input"
                     disabled={isLoading}
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-4">
+                <Form.Group className="mb-3">
                   <Form.Label>Password</Form.Label>
                   <Form.Control
                     type="password"
-                    placeholder="Enter your password"
+                    placeholder={
+                      role === "User"
+                        ? "Enter your password"
+                        : "Enter your password"
+                    }
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="login-input"
                     disabled={isLoading}
                   />
                 </Form.Group>
+
+                {/* User: Forgot option*/}
+                {role === "User" && (
+                  <div className="mb-3 d-flex justify-content-between">
+                    <a href="/forgot-password" className="small text-primary">
+                      Forgot Password?
+                    </a>
+                  </div>
+                )}
 
                 {error && (
                   <Alert variant="danger" className="text-center py-2 mb-3">
@@ -168,14 +207,32 @@ const Login = () => {
                   )}
                 </Button>
 
-                <div className="text-center">
-                  <p className="text-muted small mb-0">
-                    Don't have an account?{" "}
-                    <a href="/SignUp" className="text-primary">
-                      Sign Up
-                    </a>
-                  </p>
-                </div>
+                {/* Google Login btn */}
+                {role === "User" && (
+                  <Button
+                    variant="outline-danger"
+                    className="w-100 mb-3"
+                    onClick={handleGoogleLogin}
+                    disabled={isLoading}
+                    type="button"
+                  >
+                    <span style={{ marginRight: 8 }}>
+                      <i className="fab fa-google"></i>
+                    </span>
+                    Sign in with Google
+                  </Button>
+                )}
+
+                {role === "User" && (
+                  <div className="text-center">
+                    <p className="text-muted small mb-0">
+                      Don't have an account?{" "}
+                      <a href="/SignUp" className="text-primary">
+                        Sign Up
+                      </a>
+                    </p>
+                  </div>
+                )}
               </Form>
             </Card.Body>
           </Card>

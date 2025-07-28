@@ -80,3 +80,14 @@
 .stars {
   font-size: 1.2rem;
 }
+
+
+/* //-------------Google button----------- */
+.btn-outline-danger {
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.btn-outline-danger i {
+  margin-right: 6px;
+}

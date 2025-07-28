@@ -7,6 +7,7 @@ import ServiceRequestForm from "./Pages/ServiceRequestForm";
 import Dashboard from "./Pages/Dashboard";
 import EmployeePortal from "./Pages/EmployeePortal";
 import RequestTracking from "./Pages/RequestTracking";
+import ForgotPassword from "./Pages/ForgetPassword";
 function App() {
   return (
     <Router>
@@ -19,6 +20,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/employee-portal" element={<EmployeePortal />} />
           <Route path="/track" element={<RequestTracking />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
       </div>
     </Router>

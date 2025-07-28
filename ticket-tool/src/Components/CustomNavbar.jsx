@@ -47,18 +47,18 @@ const CustomNavbar = () => {
         {/* Right Nav Section */}
         <Navbar.Collapse id="navbar-content">
           <Nav className="ms-auto align-items-center gap-3 text-white">
-            <Nav.Link href="/dashboard" className="nav-link-custom">
-              Dashboard
+            <Nav.Link href="/" className="nav-link-custom">
+             ABOUT US
             </Nav.Link>
-            <Nav.Link href="/employee-portal" className="nav-link-custom">
-              My Tickets
+            <Nav.Link href="/" className="nav-link-custom">
+              OUR SERVICES
             </Nav.Link>
-            <Nav.Link href="/newticket" className="nav-link-custom">
+            <Nav.Link href="/" className="nav-link-custom">
               {" "}
-              <FaPlus className="me-1" /> New Ticket
+              <FaPlus className="me-1" /> TESTIMONIAL
             </Nav.Link>
-            <Nav.Link href="/track" className="nav-link-custom">
-              Track
+            <Nav.Link href="/" className="nav-link-custom">
+              CONTACT US
             </Nav.Link>
             {/* Notification Bell */}
             <Nav.Link
@@ -97,3 +97,9 @@ const CustomNavbar = () => {
 };
 
 export default CustomNavbar;
+
+
+
+
+
+

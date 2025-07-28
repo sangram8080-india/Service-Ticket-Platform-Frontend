@@ -1,35 +1,95 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import heroImage from "../Images/hero-image.jpg";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../Styles/HomePage.css";
 import Footer from "../Components/Footer";
-import SideNav from "../Components/SideNav";
+
+// -----------------------------------------
+import CountUp from "react-countup";
+import { motion } from "framer-motion";
+import CustomNavbar from "../Components/CustomNavbar";
+const metrics = [
+  { count: 1000000, duration: 1.2, suffix: "+", label: "Tickets Resolved" },
+  { count: 50000, duration: 1.1, suffix: "+", label: "Active Users" },
+  { count: 99.9, duration: 1.5, decimals: 1, suffix: "%", label: "Uptime" },
+  { count: 4.9, duration: 1.2, decimals: 1, suffix: "★", label: "User Rating" },
+];
+
 export default function Home() {
   return (
     <>
-      <SideNav />
+      <CustomNavbar />
       <div className="homepage">
+        {/* //hero section  */}
+
         <div className="container py-5">
           <div className="row align-items-center">
             <div className="col-lg-6 mb-5 mb-lg-0">
               <div className="mb-4">
                 <i className="bi bi-robot display-3 text-purple"></i>
               </div>
-              <h1 className="display-4 fw-bold">
-                <span className="text-gradient-orange">Resolve</span> Smarter.
-                <br />
-                <span className="text-gradient-orange">Track</span> Faster.
-                <br />
-                <span className="text-gradient-orange">Serve</span> Better.
-              </h1>
-              <p className="lead mt-3">
+
+              <motion.h1
+                className="display-4 fw-bold"
+                style={{ overflow: "hidden" }}
+              >
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    visible: { transition: { staggerChildren: 0.28 } },
+                    hidden: {},
+                  }}
+                >
+                  <motion.div
+                    variants={{
+                      hidden: { opacity: 0, y: 40 },
+                      visible: { opacity: 1, y: 0 },
+                    }}
+                    transition={{ type: "spring", duration: 0.7 }}
+                  >
+                    <span className="text-gradient-orange">Resolve</span>{" "}
+                    Smarter.
+                  </motion.div>
+                  <motion.div
+                    variants={{
+                      hidden: { opacity: 0, y: 40 },
+                      visible: { opacity: 1, y: 0 },
+                    }}
+                    transition={{ type: "spring", duration: 0.7 }}
+                  >
+                    <span className="text-gradient-orange">Track</span> Faster.
+                  </motion.div>
+                  <motion.div
+                    variants={{
+                      hidden: { opacity: 0, y: 40 },
+                      visible: { opacity: 1, y: 0 },
+                    }}
+                    transition={{ type: "spring", duration: 0.7 }}
+                  >
+                    <span className="text-gradient-orange">Serve</span> Better.
+                  </motion.div>
+                </motion.div>
+              </motion.h1>
+
+              <motion.p
+                className="lead mt-3"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
                 Experience the future of service management with AI-powered
                 automation, real-time tracking, and{" "}
                 <span className="text-warning">intelligent</span> insights.
-              </p>
-              <div className="mt-4">
+              </motion.p>
+              <motion.div
+                className="mt-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.1 }}
+              >
                 <Link
                   to="/signup"
                   className="btn bg-gradient-orange btn-lg me-3"
@@ -39,33 +99,52 @@ export default function Home() {
                 <Link to="/login" className="btn btn-outline-dark btn-lg">
                   Login
                 </Link>
-              </div>
-              <div className="row mt-5 text-center">
-                <div className="col-6 col-md-3">
-                  <h4>1M+</h4>
-                  <p className="hero-metric">Tickets Resolved</p>
-                </div>
-                <div className="col-6 col-md-3">
-                  <h4>50K+</h4>
-                  <p className="hero-metric">Active Users</p>
-                </div>
-                <div className="col-6 col-md-3">
-                  <h4>99.9%</h4>
-                  <p className="hero-metric">Uptime</p>
-                </div>
-                <div className="col-6 col-md-3">
-                  <h4>4.9★</h4>
-                  <p className="hero-metric">User Rating</p>
-                </div>
-              </div>
+              </motion.div>
+              <motion.div
+                className="row mt-5 text-center"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: {},
+                  visible: { transition: { staggerChildren: 0.13 } },
+                }}
+              >
+                {metrics.map((metric) => (
+                  <motion.div
+                    key={metric.label}
+                    className="col-6 col-md-3"
+                    variants={{
+                      hidden: { opacity: 0, y: 30 },
+                      visible: { opacity: 1, y: 0 },
+                    }}
+                  >
+                    <h4>
+                      <CountUp
+                        end={metric.count}
+                        duration={metric.duration}
+                        decimals={metric.decimals || 0}
+                        separator=","
+                        suffix={metric.suffix}
+                      />
+                    </h4>
+                    <p className="hero-metric">{metric.label}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
             </div>
             <div className="col-lg-6 text-center">
-        
-              <img
+              <motion.img
                 src={heroImage}
                 alt="AI Service Management"
                 className="hero-img img-fluid rounded shadow"
                 style={{ maxHeight: "410px", objectFit: "contain" }}
+                initial={{ scale: 0.92, opacity: 0, y: 30 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                transition={{ type: "spring", duration: 0.9, delay: 0.4 }}
+                whileHover={{
+                  scale: 1.04,
+                  boxShadow: "0 12px 48px rgba(168, 85, 247, 0.2)",
+                }}
               />
             </div>
           </div>
@@ -131,13 +210,15 @@ export default function Home() {
               <Button variant="primary" size="lg" className="me-3 px-4 fw-bold">
                 Contact Sales
               </Button>
-              <Button
-                variant="outline-primary"
-                size="lg"
-                className="px-4 fw-bold"
-              >
-                Get Started
-              </Button>
+              <Link to="/login">
+                <Button
+                  variant="outline-primary"
+                  size="lg"
+                  className="px-4 fw-bold"
+                >
+                  Get Started
+                </Button>
+              </Link>
             </div>
           </Container>
         </section>

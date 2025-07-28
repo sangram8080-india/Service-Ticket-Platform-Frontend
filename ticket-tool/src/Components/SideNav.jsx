@@ -24,7 +24,7 @@ const SideNav = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const menuItems = [
-      { name: 'Home', icon: <Briefcase size={18} />, path: '/' },
+      // { name: 'Home', icon: <Briefcase size={18} />, path: '/' },
     { name: 'Dashboard', icon: <House size={18} />, path: '/dashboard' },
     { name: 'Tickets', icon: <Ticket size={18} />, path: '/newticket' },
     { name: 'Employees', icon: <People size={18} />, path: '/employee-portal' },
