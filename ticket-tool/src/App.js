@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from "./Pages/SignUp";
 import Login from "./Pages/Login";
 import Home from "./Pages/Home";
-import ServiceRequestForm from "./Pages/ServiceRequestForm";
-import Dashboard from "./Pages/Dashboard";
-import EmployeePortal from "./Pages/EmployeePortal";
-import RequestTracking from "./Pages/RequestTracking";
+import ServiceRequestForm from "./Pages/User/ServiceRequestForm";
+import Dashboard from "./Pages/Admin/Dashboard";
+import EmployeePortal from "./Pages/Employee/EmployeePortal";
+import RequestTracking from "./Pages/User/RequestTracking";
 import ForgotPassword from "./Pages/ForgetPassword";
 function App() {
   return (

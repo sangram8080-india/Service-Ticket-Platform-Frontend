@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Row, Col, Card, Table } from "react-bootstrap";
-import SideNav from "../Components/SideNav";
-import Footer from "../Components/Footer";
-import "../Styles/Dashboard.css"; // We'll use custom CSS for SideNav width, etc.
+import SideNav from "../../Components/SideNav";
+import Footer from "../../Components/Footer";
+import "../../Styles/Dashboard.css";
 
 const Dashboard = () => {
   const stats = [

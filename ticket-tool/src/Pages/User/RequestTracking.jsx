@@ -1,6 +1,6 @@
 import React from "react";
-import Footer from "../Components/Footer";
-import SideNav from "../Components/SideNav";
+import Footer from "../../Components/Footer";
+import SideNav from "../../Components/SideNav";
 export default function RequestTracking() {
   return (
     <>

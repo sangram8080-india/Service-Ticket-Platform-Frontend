@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../Styles/ServiceRequestForm.css"; // Your custom styling if needed
-import LocationDetector from "../Components/LocationDetector";
-import Footer from "../Components/Footer";
-import SideNav from "../Components/SideNav";
+import "../../Styles/ServiceRequestForm.css"; 
+import LocationDetector from "../../Components/LocationDetector";
+import Footer from "../../Components/Footer";
+import SideNav from "../../Components/SideNav";
 const ServiceRequestForm = () => {
-  // Initializing all fields in state
   const [formData, setFormData] = useState({
     requestTitle: "",
     category: "",
@@ -16,7 +15,6 @@ const ServiceRequestForm = () => {
     files: [],
   });
 
-  // For text/select inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -25,7 +23,6 @@ const ServiceRequestForm = () => {
     }));
   };
 
-  // For file input
   const handleFileChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -33,7 +30,6 @@ const ServiceRequestForm = () => {
     }));
   };
 
-  // On form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
@@ -54,7 +50,6 @@ const ServiceRequestForm = () => {
 
         <div className="card-body">
           <form onSubmit={handleSubmit}>
-            {/* Request Title */}
             <div className="mb-4">
               <label htmlFor="requestTitle" className="form-label fw-bold">
                 Request Title
@@ -71,7 +66,6 @@ const ServiceRequestForm = () => {
               />
             </div>
 
-            {/* Category */}
             <div className="mb-4">
               <label htmlFor="category" className="form-label fw-bold">
                 Category
@@ -92,7 +86,6 @@ const ServiceRequestForm = () => {
               </select>
             </div>
 
-            {/* Priority and Urgency */}
             <div className="row mb-4">
               <div className="col-md-6">
                 <label className="form-label fw-bold">Priority Level</label>
@@ -177,13 +170,11 @@ const ServiceRequestForm = () => {
                 onChange={handleChange}
               />
 
-              {/* 📍 Use My Location Button */}
               <LocationDetector
                 onDetect={(loc) => setFormData({ ...formData, location: loc })}
               />
             </div>
 
-            {/* Description */}
             <div className="mb-4">
               <label htmlFor="description" className="form-label fw-bold">
                 Description
@@ -203,7 +194,6 @@ const ServiceRequestForm = () => {
               </div>
             </div>
 
-            {/* File Upload */}
             <div className="mb-4">
               <h5 className="fw-bold">Attachments</h5>
               <p className="text-muted">
@@ -233,7 +223,6 @@ const ServiceRequestForm = () => {
               )}
             </div>
 
-            {/* Submit Button */}
             <div className="d-grid mt-4">
               <button type="submit" className="btn bg-gradient-orange  btn-lg">
                 <i className="bi bi-send-fill me-2"></i> Submit Ticket
