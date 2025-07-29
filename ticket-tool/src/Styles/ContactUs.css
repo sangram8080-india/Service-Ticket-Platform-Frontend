@@ -1,0 +1,101 @@
+/* Card entrance animation */
+.contact-animate-container {
+  animation: fadeInUpContact 0.8s cubic-bezier(.36,1.35,.48,1.02);
+}
+
+@keyframes fadeInUpContact {
+  0%   { opacity: 0; transform: translateY(52px) scale(.97);}
+  100% { opacity: 1; transform: translateY(0) scale(1);}
+}
+
+/* Card shadow + hover lift */
+.contact-animate-container {
+  transition: box-shadow 0.3s, transform 0.25s;
+}
+.contact-animate-container:hover {
+  box-shadow: 0 14px 40px 0 #ff910014, 0 2px 8px #ff910024 !important;
+  transform: translateY(-5px) scale(1.012);
+}
+
+/* Form and inputs */
+.form-floating .form-control {
+  border-radius: 13px;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  font-size: 1.08rem;
+  border: 1.5px solid #f2eae2;
+  box-shadow: none;
+  background: #f7f5f1 !important;
+  transition: border-color 0.19s, box-shadow 0.22s;
+}
+.form-floating .form-control:focus {
+  border-color: #ff8b2d;
+  box-shadow: 0 2px 8px -4px #ffb8702c;
+  outline: none;
+  background: #fffbe9 !important;
+}
+.form-floating label {
+  color: #be8a48;
+  transition: color 0.22s;
+}
+.form-control:focus + label {
+  color: #ff8b2d !important;
+}
+
+/* Send button enhanced */
+.btn-send-animate {
+  background: linear-gradient(90deg,#ffae58 15%,#ff8b2d 90%);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 50px;
+  box-shadow: 0 2px 16px #ff982726;
+  transition: background 0.20s, box-shadow 0.22s, transform 0.18s;
+  letter-spacing: 0.055em;
+  overflow: hidden;
+  outline: none !important;
+}
+.btn-send-animate:hover, .btn-send-animate:focus {
+  background: linear-gradient(90deg,#ff8b2d 20%,#ffd18c 100%);
+  color: #fff;
+  box-shadow: 0 7px 36px #ffb05123;
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* Animated success message */
+.animate-success {
+  animation: popSuccess 0.48s cubic-bezier(.58,1.5,.52,1.01);
+  border-radius: 15px;
+}
+@keyframes popSuccess {
+  0% { opacity: 0; transform: scale(.85);}
+  84% { opacity: 1; transform: scale(1.1);}
+  100% { opacity: 1; transform: scale(1);}
+}
+
+/* Contact icons and highlight */
+.text-orange { color: #ff8b2d; }
+.contact-icon {
+  color: #ff8b2d;
+  margin-right: 0.7em;
+  font-size: 1.09em;
+  vertical-align: -2px;
+  animation: iconPopIn 0.78s;
+}
+@keyframes iconPopIn {
+  0% { opacity:0; transform: scale(0.7);}
+  100% { opacity:1; transform: scale(1);}
+}
+
+/* Responsive tweaks: stack columns on mobile */
+@media (max-width: 767px) {
+  .contact-animate-container {
+    flex-direction: column !important;
+  }
+  .col-md-6.p-0, .col-md-6.p-5 {
+    padding: 0 !important;
+  }
+  .col-md-6.p-5 {
+    padding: 2.4rem 1rem 1.25rem 1rem !important;
+    min-width: 100%;
+  }
+}

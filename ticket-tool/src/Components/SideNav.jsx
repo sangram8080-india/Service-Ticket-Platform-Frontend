@@ -27,7 +27,7 @@ const SideNav = () => {
       // { name: 'Home', icon: <Briefcase size={18} />, path: '/' },
     { name: 'Dashboard', icon: <House size={18} />, path: '/dashboard' },
     { name: 'Tickets', icon: <Ticket size={18} />, path: '/newticket' },
-    { name: 'Employees', icon: <People size={18} />, path: '/employee-portal' },
+    { name: 'Location Tracking', icon: <People size={18} />, path: '/location-tracking' },
     { name: 'Analytics', icon: <BarChart size={18} />, path: '/analytics' },
     { name: 'RequestTracking', icon: <ArrowLeftRight size={18} />, path: '/track' },
     { name: 'Services', icon: <Chat size={18} />, path: '/' },
@@ -158,3 +158,7 @@ const SideNav = () => {
 };
 
 export default SideNav;
+
+
+
+

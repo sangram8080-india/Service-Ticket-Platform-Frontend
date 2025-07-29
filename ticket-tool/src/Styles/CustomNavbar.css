@@ -1,118 +1,154 @@
-/* .text-gradient-blue {
-  color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
-}
-
+/* ---- Navbar base styles ---- */
 .custom-navbar {
-  background-color: #ffffff;
-  color: #1c1e21;
-  font-family: "Segoe UI", sans-serif;
-  border-bottom: 1px solid #eee;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  background: #fff;
+  border-bottom: 1px solid #f1f2f5;
+  box-shadow: 0 2px 16px -6px #ff88181a;
+  transition: box-shadow 0.4s cubic-bezier(.56,.03,.71,.98), background 0.4s;
+  z-index: 100;
+  animation: fadeInMoveDown 0.9s cubic-bezier(0.52,1.5,0.5,1.05);
 }
-
-.logo-icon {
-  font-size: 1.4rem;
-  color: #f76300;
+@keyframes fadeInMoveDown {
+  0% { opacity: 0; transform: translateY(-16px);}
+  70% { opacity: 0.8;}
+  100% { opacity: 1; transform: translateY(0); }
 }
-
-.tagline {
-  font-size: 0.65rem;
-  color: rgb(249 115 22 / var(--tw-text-opacity, 1));
-}
-
-.search-wrapper {
-  flex: 1;
-  justify-content: center;
-  max-width: 350px;
-  margin: 0 1rem;
-}
-
-.search-input {
-  border-radius: 20px;
-  padding: 6px 14px;
-  border: 1px solid #ddd;
-  background-color: #aeaeae26;
-  color: #333;
-  font-size: 0.9rem;
-}
-
-.search-input::placeholder {
-  color: #999;
-}
-
-.nav-link-custom {
-  color: #1c1e21 !important;
-  font-weight: 500;
-  font-size: 0.95rem;
-  padding: 8px 14px;
-  transition: all 0.2s ease-in-out;
-}
-
-.nav-link-custom:hover {
-  color: #f76300 !important;
-  background-color: transparent;
-}
-
-.notification-badge {
-  background: #f44336;
-  color: white;
-  font-size: 0.65rem;
-  padding: 2px 6px;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  right: -8px;
-}
-
-.profile-dropdown {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-}
-
-.profile-dropdown:hover,
-.profile-dropdown:focus {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-.get-demo-btn {
-  background-color: #f76300;
-  border: none;
-  padding: 8px 18px;
-  color: white;
-  font-weight: 600;
-  font-size: 0.9rem;
-  border-radius: 8px;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.get-demo-btn:hover {
-  background-color: #d85500;
-}
-
 @media (max-width: 991px) {
-  .search-wrapper {
-    display: flex !important;
-    width: 100%;
-    margin: 10px 0;
+  .custom-navbar .navbar-collapse {
+    background: #fff;
+    box-shadow: 0 12px 20px -12px #0001;
+    border-radius: 0 0 12px 12px;
+    margin-top: 4px;
+    padding: 1.2rem;
+    animation: fadeInMoveDown 0.7s cubic-bezier(0.52,1.5,0.5,1.05);
   }
+}
 
-  .navbar-collapse {
-    background-color: #f7f7f7;
-    border-radius: 8px;
-    padding: 12px;
-  }
+/* ---- Logo styles ---- */
+.logo-brand .logo-icon {
+  font-size: 1.7rem;
+  color: #ff8800;
+  animation: popIn 0.9s cubic-bezier(.4,1.7,.6,1.02) both;
+  box-shadow: 0 0 8px 0 #ff770066;
+  transition: transform 0.29s, filter 0.29s;
+}
+.logo-brand .logo-icon:hover {
+  filter: brightness(1.22) drop-shadow(0 0 6px #ffb70088);
+  transform: scale(1.21) rotate(-6deg);
+}
+@keyframes popIn {
+  0% { transform: scale(0.5) rotate(-18deg); opacity: 0.3; }
+  90% { transform: scale(1.17); }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+.logo-brand .brand-text {
+  font-weight: bold;
+  color: #333d4b;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  animation: slideFadeIn 0.7s ease 0.12s backwards;
+}
+@keyframes slideFadeIn {
+  0% { opacity: 0; transform: translateX(-18px);}
+  100% { opacity: 1; transform: translateX(0);}
+}
 
-  .nav-link-custom {
-    display: block;
-    width: 100%;
-    text-align: left;
-    margin-bottom: 8px;
-  }
-} */
+/* ---- Nav Links ---- */
+.nav-link-custom {
+  color: #23272e !important;
+  font-weight: 500;
+  position: relative;
+  padding: 0.45rem 0.9rem;
+  transition: color 0.18s, text-shadow 0.36s, background 0.27s;
+  font-size: 1.07rem;
+  text-shadow: none;
+  outline: none;
+}
+.nav-link-custom::after {
+  content: '';
+  position: absolute;
+  left: 18%;
+  bottom: 6px;
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, #ffb76b 40%, #ff7700 100%);
+  opacity: 0;
+  border-radius: 1px;
+  transform: scaleX(0.4);
+  transition: all 0.24s cubic-bezier(.42,0,.58,1);
+}
+.nav-link-custom:hover, .nav-link-custom:focus {
+  color: #ff7700 !important;
+  text-shadow: 0 2px 12px #fb850a3f;
+  background: linear-gradient(90deg,#ffeeec12 10%, #fff6e9 100%);
+  border-radius: 5px;
+  transition: color 0.16s, background 0.24s, text-shadow 0.29s;
+}
+.nav-link-custom:hover::after, .nav-link-custom:focus::after {
+  opacity: 1;
+  transform: scaleX(1.07);
+  box-shadow: 0 1.5px 1.5px #ff882020;
+}
 
+/* Resource Dropdown */
+.dropdown-toggle-no-arrow::after { display: none !important; }
+.dropdown-menu {
+  border-radius: 10px;
+  margin-top: 8px !important;
+  border: 1px solid #f1f2f5;
+  min-width: 8rem;
+  padding: 0.5rem 0;
+  box-shadow: 0 8px 28px #ffb70015;
+  animation: fadeDropdown 0.42s cubic-bezier(.42,0,.58,1);
+}
+@keyframes fadeDropdown {
+  0% { opacity: 0; transform: translateY(-8px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+.dropdown-item {
+  font-size: 1.02rem;
+  transition: background 0.14s, color 0.17s;
+}
+.dropdown-item:active,
+.dropdown-item:focus,
+.dropdown-item:hover {
+  background: linear-gradient(90deg, #ffedcf 30%, #fff6e1 90%);
+  color: #ff8b20;
+}
 
+/* ---- CTA Button ---- */
+.demo-btn {
+  background: linear-gradient(90deg, #ffab4a 30%, #ff7700 100%);
+  border: none;
+  border-radius: 7px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.02rem;
+  box-shadow: 0 1.5px 11px #fa940828;
+  transition: background 0.16s, transform 0.23s, box-shadow 0.27s;
+  letter-spacing: 0.03em;
+  outline: none !important;
+  animation: fadeInUp 0.66s cubic-bezier(.42,0,.58,1);
+}
+.demo-btn:hover, .demo-btn:active {
+  background: linear-gradient(90deg, #ff7700 60%, #ffd191 90%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.07);
+  box-shadow: 0 3px 18px #ff950020;
+}
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(18px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
 
+/* Hamburger toggler */
+.navbar-light-toggler {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  animation: fadeInUp 0.64s cubic-bezier(.42,0,.58,1) 0.13s backwards;
+}
+.navbar-light-toggler:focus { outline: 0 }
 
-
-
+/* Utility: general fade-ins for child elements if you want, e.g., icons */
+.animate-pop { animation: popIn 1s both; }
+.fade-in { animation: fadeInMoveDown 0.7s cubic-bezier(.56,.03,.71,.98);}
