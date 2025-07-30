@@ -24,7 +24,7 @@ const CustomNavbar = () => (
         <Nav className="align-items-center gap-3">
           <Nav.Link href="/" className="nav-link-custom">Home</Nav.Link>
           <Nav.Link href="/" className="nav-link-custom">About Us</Nav.Link>
-          <Nav.Link href="/" className="nav-link-custom">Services</Nav.Link>
+          <Nav.Link href="/employee-portal" className="nav-link-custom">Services</Nav.Link>
           <Dropdown>
             <Dropdown.Toggle variant="link" className="nav-link-custom dropdown-toggle-no-arrow">
               Tickets <FaChevronDown size={10} style={{ marginLeft: 4 }} />

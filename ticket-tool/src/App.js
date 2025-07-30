@@ -9,6 +9,7 @@ import EmployeePortal from "./Pages/Employee/EmployeePortal";
 import RequestTracking from "./Pages/User/RequestTracking";
 import ForgotPassword from "./Pages/ForgetPassword";
 import ContactUs from "./Pages/ContactUs";
+// import HomeServicesSection from "./Pages/HomeServicesSection";
 function App() {
   return (
     <Router>
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          {/* <Route path="/services" element={<HomeServicesSection />} /> */}
           <Route path="/contactus" element={<ContactUs />} />
           {/* ---user pages ---- */}
           <Route path="/newticket" element={<ServiceRequestForm />} />
