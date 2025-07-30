@@ -59,7 +59,7 @@ const EmployeeSideNav = ({ collapsed, setCollapsed }) => {
                 setShowMonitoringSubmenu(false);
                 closeMobileMenu();
               }}>
-              <Link to="/tickets" className="nav-link">
+              <Link to="/employee-portal/tickets" className="nav-link">
                 <span className="nav-icon"><Ticket size={18} /></span>
                 {!collapsed && <span className="nav-text">Tickets</span>}
               </Link>
@@ -71,7 +71,7 @@ const EmployeeSideNav = ({ collapsed, setCollapsed }) => {
                 setShowMonitoringSubmenu(false);
                 closeMobileMenu();
               }}>
-              <Link to="/location-tracking" className="nav-link">
+              <Link to="/employee-portal/location-tracking" className="nav-link">
                 <span className="nav-icon"><GeoAlt size={18} /></span>
                 {!collapsed && <span className="nav-text">Location Tracking</span>}
               </Link>
@@ -93,9 +93,9 @@ const EmployeeSideNav = ({ collapsed, setCollapsed }) => {
             </li>
             {!collapsed && showMonitoringSubmenu && (
               <div className="settings-menu">
-                <Link to="/monitoring/ongoing" className="settings-menu-item" onClick={closeMobileMenu}><span>Ongoing</span></Link>
-                <Link to="/monitoring/pending" className="settings-menu-item" onClick={closeMobileMenu}><span>Pending</span></Link>
-                <Link to="/monitoring/completed" className="settings-menu-item" onClick={closeMobileMenu}><span>Completed</span></Link>
+                <Link to="/employee-portal/ongoing" className="settings-menu-item" onClick={closeMobileMenu}><span>Ongoing</span></Link>
+                <Link to="/employee-portal/ongoing" className="settings-menu-item" onClick={closeMobileMenu}><span>Pending</span></Link>
+                <Link to="/employee-portal/ongoing" className="settings-menu-item" onClick={closeMobileMenu}><span>Completed</span></Link>
               </div>
             )}
           </ul>
@@ -117,7 +117,7 @@ const EmployeeSideNav = ({ collapsed, setCollapsed }) => {
           </div>
           {!collapsed && showSettingsMenu && (
             <div className="settings-menu">
-              <Link to="/profile" className="settings-menu-item" onClick={closeMobileMenu}>
+              <Link to="/employee-portal/profile" className="settings-menu-item" onClick={closeMobileMenu}>
                 <span className="settings-icon"><Person size={16} /></span>
                 <span>Profile</span>
               </Link>
