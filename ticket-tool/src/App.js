@@ -3,14 +3,17 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from "./Pages/SignUp";
 import Login from "./Pages/Login";
 import Home from "./Pages/Home";
-import ServiceRequestForm from "./Pages/User/ServiceRequestForm";
 import Dashboard from "./Pages/Admin/Dashboard";
-// import EmployeePortal from "./Pages/Employee/EmployeePortal";
-import RequestTracking from "./Pages/User/RequestTracking";
 import ForgotPassword from "./Pages/ForgetPassword";
 import ContactUs from "./Pages/ContactUs";
 import EmployeeRoutes from "./Pages/Employee/EmployeeRoutes";
-// import HomeServicesSection from "./Pages/HomeServicesSection";
+import UserRoutes from "./Pages/User/UserRoutes";
+import ServicesPage from "./Pages/ServicePage";
+// import AboutUs from "./Pages/AboutUs";
+
+
+
+
 function App() {
   return (
     <Router>
@@ -22,22 +25,17 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          {/* <Route path="/services" element={<HomeServicesSection />} /> */}
+          <Route path="/services" element={<ServicesPage />} />
           <Route path="/contactus" element={<ContactUs />} />
+          {/* <Route path="/aboutus" element={<AboutUs />} /> */}
 
 
 
           {/* ---user pages ---- */}
-          <Route path="/newticket" element={<ServiceRequestForm />} />
-          <Route path="/track" element={<RequestTracking />} />
-
-
-
+          <Route path="/user-portal/*" element={<UserRoutes />} />
+        
           {/*  employee pages ---- */}  
 <Route path="/employee-portal/*" element={<EmployeeRoutes />} />
-
-
-
 
           {/* ---admin pages ---- */}
           <Route path="/dashboard" element={<Dashboard />} />
