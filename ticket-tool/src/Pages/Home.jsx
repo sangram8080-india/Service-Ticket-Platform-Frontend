@@ -18,6 +18,7 @@ const metrics = [
 ];
 
 export default function Home() {
+    const orange = "#F7941D";
   return (
     <>
       <CustomNavbar />
@@ -279,6 +280,7 @@ export default function Home() {
           </Container>
         </div>
       </div>
+      
       {/* ----------------------------------------------------------- */}
 
       {/* --------------------------------- */}

@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import SignUp from "./Pages/SignUp";
 import Login from "./Pages/Login";
 import Home from "./Pages/Home";
@@ -9,8 +10,7 @@ import ContactUs from "./Pages/ContactUs";
 import EmployeeRoutes from "./Pages/Employee/EmployeeRoutes";
 import UserRoutes from "./Pages/User/UserRoutes";
 import ServicesPage from "./Pages/ServicePage";
-// import AboutUs from "./Pages/AboutUs";
-
+import AboutUsPage from "./Pages/AboutUsPage"; // Adjust relative path accordingly
 
 
 
@@ -27,8 +27,7 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/contactus" element={<ContactUs />} />
-          {/* <Route path="/aboutus" element={<AboutUs />} /> */}
-
+<Route path="/aboutus" element={<AboutUsPage />} />
 
 
           {/* ---user pages ---- */}
