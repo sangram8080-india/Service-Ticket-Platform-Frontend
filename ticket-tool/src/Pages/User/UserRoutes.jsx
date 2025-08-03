@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import UserPortalLayout from "./UserPortalLayout";
 import RequestTracking from "./RequestTracking";
 import NewTicket from "./NewTicket";
-const EmployeeRoutes = () => {
+const UserRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<UserPortalLayout />}>
@@ -15,4 +15,4 @@ const EmployeeRoutes = () => {
   );
 };
 
-export default EmployeeRoutes;
+export default UserRoutes;
