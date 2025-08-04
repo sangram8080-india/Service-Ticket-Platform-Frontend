@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import UserPortalLayout from "./UserPortalLayout";
 import RequestTracking from "./RequestTracking";
 import NewTicket from "./NewTicket";
+import Profile from "./Profile";
 const UserRoutes = () => {
   return (
     <Routes>
@@ -10,6 +11,7 @@ const UserRoutes = () => {
       
              <Route path="newticket" element={<NewTicket />} />
              <Route path="track" element={<RequestTracking />} />
+             <Route path="profile" element={<Profile />} />
       </Route>
     </Routes>
   );

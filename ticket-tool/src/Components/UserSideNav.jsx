@@ -108,7 +108,7 @@ const UserSideNav = ({ collapsed, setCollapsed }) => {
           </div>
           {!collapsed && showSettingsMenu && (
             <div className="settings-menu">
-              <Link to="/employee-portal/profile" className="settings-menu-item" onClick={closeMobileMenu}>
+              <Link to="/User-portal/profile" className="settings-menu-item" onClick={closeMobileMenu}>
                 <span className="settings-icon"><Person size={16} /></span>
                 <span>Profile</span>
               </Link>

@@ -1,38 +1,39 @@
-
-
 import React, { useState } from "react";
 import {
-  Container,
+  Col,
+  Card,
   Form,
   Button,
-  Card,
-  Row,
-  Col,
   Alert,
   Spinner,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../Styles/LoginPage.css";
-import axios from "axios";
-import BrandLogo from "../Components/BrandLogo";
+import "../Styles/LoginPage.css"; 
 import RegisterImage from "../Images/1.png";
-
 const Login = () => {
-  // For user: email; for employee: employeeId
   const [emailOrEmpId, setEmailOrEmpId] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("User");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const API_URL =
-    "https://perpetual-liberation-service-ticket.up.railway.app/api/login";
+  // backend login endpoint here
+  const API_URL = "https://your-domain.com/api/login";
 
-  //Google handler
+  // Add Google login logic here
   const handleGoogleLogin = () => {
-    alert("Google Sign-in Clicked");
+    alert("Google Sign-in Clicked (to be implemented)");
   };
 
+  // Handle role switching and clear fields/error
+  const handleRoleSelect = (selectedRole) => {
+    setRole(selectedRole);
+    setEmailOrEmpId("");
+    setPassword("");
+    setError("");
+  };
+
+  // Actual form submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -49,23 +50,40 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      let data = { password, role };
-      if (role === "User") data.email = emailOrEmpId;
-      else data.employeeId = emailOrEmpId; // Backend must accept employeeId for Employee
+      const body = {
+        login: emailOrEmpId,
+        password,
+        role,
+      };
 
-      const response = await axios.post(API_URL, data, {
+      const response = await fetch(API_URL, {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
       });
 
-      const { token, userData } = response.data;
-      localStorage.setItem("authToken", token);
-      localStorage.setItem("userData", JSON.stringify(userData));
-      window.location.href =
-        role === "User" ? "/dashboard" : "/employee-portal";
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.message || "Login failed. Please try again.");
+        setIsLoading(false);
+        return;
+      }
+
+      // Store token/role for authentication in future requests/pages
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("role", data.role);
+
+      // Redirect based on user role
+      if (data.role === "Admin") {
+        window.location.href = "/admin-panel";
+      } else if (data.role === "Employee") {
+        window.location.href = "/employee-portal";
+      } else {
+        window.location.href = "/dashboard";
+      }
     } catch (err) {
-      setError(
-        err.response?.data?.message || "Login failed. Please try again."
-      );
+      setError("Server error. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -73,19 +91,13 @@ const Login = () => {
 
   return (
     <div className="login-page-container d-flex flex-column flex-md-row min-vh-100">
-      {/* Left Side Info Section */}
+      {/* Left Side Visual */}
       <Col
         md={6}
         className="d-flex align-items-center justify-content-center bg-text-gradient-blue text-white flex-column p-5 left-sidebar"
       >
         <div className="text-center">
-          <img
-            src={RegisterImage}
-            alt="Help Desk Illustration"
-            className="img-fluid mb-4 sidebar-image"
-            style={{ maxWidth: "250px" }}
-          />
-
+          <img src={RegisterImage} alt="Help Desk Illustration" className="img-fluid mb-4 sidebar-image" style={{ maxWidth: "250px" }} />
           <h2 className="fw-bold mb-3">The Best Help Desk Software</h2>
           <p>Unlimited agents, fantastic support, easy to use!</p>
           <a href="/" className="btn btn-outline-light mt-4">
@@ -94,7 +106,7 @@ const Login = () => {
         </div>
       </Col>
 
-      {/* Right Side Login Form */}
+      {/* Right Side: Login Form */}
       <div className="login-form-panel d-flex align-items-center justify-content-center p-4 bg-white w-100">
         <div style={{ maxWidth: "400px", width: "100%" }}>
           <Card className="login-card">
@@ -103,38 +115,33 @@ const Login = () => {
                 <h2 className="fw-bold mb-2">Welcome Back</h2>
                 <p className="text-muted">Sign in to your account</p>
               </div>
-
               {/* Role Selection */}
               <div className="role-selection mb-4">
                 <h6 className="mb-3 text-center">I am a</h6>
                 <div className="d-flex gap-3 justify-content-center">
                   <Button
                     variant={role === "User" ? "primary" : "outline-primary"}
-                    onClick={() => {
-                      setRole("User");
-                      setEmailOrEmpId(""); // Reset input on role switch
-                      setPassword("");
-                    }}
+                    onClick={() => handleRoleSelect("User")}
                     className={`role-btn ${role === "User" ? "active" : ""}`}
                     disabled={isLoading}
                   >
                     User
                   </Button>
                   <Button
-                    variant={
-                      role === "Employee" ? "primary" : "outline-primary"
-                    }
-                    onClick={() => {
-                      setRole("Employee");
-                      setEmailOrEmpId(""); // Reset input on role switch
-                      setPassword("");
-                    }}
-                    className={`role-btn ${
-                      role === "Employee" ? "active" : ""
-                    }`}
+                    variant={role === "Employee" ? "primary" : "outline-primary"}
+                    onClick={() => handleRoleSelect("Employee")}
+                    className={`role-btn ${role === "Employee" ? "active" : ""}`}
                     disabled={isLoading}
                   >
                     Employee
+                  </Button>
+                  <Button
+                    variant={role === "Admin" ? "primary" : "outline-primary"}
+                    onClick={() => handleRoleSelect("Admin")}
+                    className={`role-btn ${role === "Admin" ? "active" : ""}`}
+                    disabled={isLoading}
+                  >
+                    Admin
                   </Button>
                 </div>
               </div>
@@ -142,39 +149,35 @@ const Login = () => {
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                   <Form.Label>
-                    {role === "User" ? "Email Address" : "Employee ID"}
+                    {role === "User"
+                      ? "Email Address"
+                      : "Employee ID / Admin ID"}
                   </Form.Label>
                   <Form.Control
                     type={role === "User" ? "email" : "text"}
                     placeholder={
                       role === "User"
                         ? "Enter your email"
-                        : "Enter your Employee ID"
+                        : "Enter your Employee or Admin ID"
                     }
                     value={emailOrEmpId}
-                    onChange={(e) => setEmailOrEmpId(e.target.value)}
+                    onChange={e => setEmailOrEmpId(e.target.value)}
                     className="login-input"
                     disabled={isLoading}
                   />
                 </Form.Group>
-
                 <Form.Group className="mb-3">
                   <Form.Label>Password</Form.Label>
                   <Form.Control
                     type="password"
-                    placeholder={
-                      role === "User"
-                        ? "Enter your password"
-                        : "Enter your password"
-                    }
+                    placeholder="Enter your password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={e => setPassword(e.target.value)}
                     className="login-input"
                     disabled={isLoading}
                   />
                 </Form.Group>
 
-                {/* User: Forgot option*/}
                 {role === "User" && (
                   <div className="mb-3 d-flex justify-content-between">
                     <a href="/forgot-password" className="small text-primary">
@@ -207,7 +210,7 @@ const Login = () => {
                   )}
                 </Button>
 
-                {/* Google Login btn */}
+                {/* Google Login only for User */}
                 {role === "User" && (
                   <Button
                     variant="outline-danger"
